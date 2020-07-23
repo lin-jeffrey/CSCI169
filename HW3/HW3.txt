@@ -1,0 +1,50 @@
+1. Write a function in python
+def fun(x, y):
+
+that if called with
+
+fun(1, 2)
+
+returns 3
+
+and if called with
+
+fun("hi", "there")
+
+returns “hithere”
+
+and if called with
+
+fun(5, 2)
+
+returns 7
+
+etc.
+
+
+Your function should work for any input as long as both inputs are strings or both inputs are numbers.
+
+
+ 
+
+2. Write a function in python
+def report(xs):
+
+that if called with
+
+report([“Jill”, “Johnson”, 87, “Billy”, “Ray”, “Cyrus”, 78, “Rita”, “Yeats”, 94, “Bobbie”, “Sue”, “Palmer”, 72])
+
+returns the string
+
+“Jill, Billy Ray, Rita, Bobbie Sue, averaged 82.75.”
+
+Your function should work for any input list formatted similarly to the example, with first, possibly middle, and last names, followed by a score.
+
+ 
+
+4. (15 points)  In this problem, you will write a Python program to solve the 8-Queens problem.  In chess, a queen can move any number of squares horizontally, vertically, or diagonally.   The 8-queens problem is the problem of trying to place eight queens on an empty chessboard in such a way that no queen can attack any other queen.  This problem is intriguing because there is no efficient algorithm known for solving the general problem.  Rather, the straightforward algorithm of trying all possible placements is most often used in practice, with the only optimization being that each queen must be placed in a separate row and column:
+	1. Starting with the first row, try to place a queen in the current column.
+	2. If you can safely place a queen in that column, move on to the next column
+	3. If you are unable to safely place a queen in that column, go back to the previous column, and move that queen down to the next row where it can safely be placed. Move on to the next column.
+Write a program in python to solve the 8-queens problem.  Your program should produce as output an 8X8 diagram of the chessboard, with a 1 indicating the presence of a queen in a square and a 0 indicating the absence of a queen.
+
