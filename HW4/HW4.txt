@@ -1,0 +1,115 @@
+1. Translate this C++ program to Java (Quicksort):  http://math.scu.edu/~linnell/cs169s19/hw/hw2/main.cpp (Links to an external site.)
+ 
+To make a Java program in Eclipse, make sure Java is selected in the upper right, then make a new Java project.  Right-click on the src folder in the left panel, and create a new class.  You should be ready to start programming
+
+ 
+
+2.  In this problem, you will explore inheritance.  Implement the classes Food, Fruit, Orange, Apple, Seafood, Shrimp, and Prawn as represented in the class diagram here:  http://math.scu.edu/~linnell/169resources/classDiag.pdf (Links to an external site.)
+ 
+
+That is, Fruit inherits from Food, Orange inherits from Fruit, etc.
+
+The first area in a class’s box is its name, the second is its member data fields and their types, and the third is its member methods.  So you can tell what the methods should do, I’ve included the following main function and its output. 
+
+ 
+
+import java.util.Date;
+
+class MainClass
+
+{
+
+  public static void main(String args[])
+
+  {
+
+         Date d = new Date(2000000000);
+
+         Food gum = new Food("gum");
+
+         Food las = new Food("lasagna");
+
+         Fruit pom  = new Fruit(d, "pomegranate");
+
+         Fruit app = new Apple(d);
+
+         Orange o = new Orange(d);
+
+         Shrimp sh = new Shrimp();       
+
+         Seafood p = new Prawn();
+
+         Seafood l = new Seafood("lobster");
+
+        
+
+         sh.prepare();
+
+         app.prepare();
+
+         pom.prepare();
+
+         o.prepare();
+
+         gum.prepare();
+
+         p.prepare();
+
+         l.prepare();
+
+         las.prepare();
+
+ 
+
+         las = app;
+
+         las.prepare();
+
+        
+
+         o.ripeTime();
+
+         pom.ripeTime();
+
+  }
+
+}
+
+ 
+
+Peel the shrimp
+
+Core the apple
+
+Prepare the pomegranate
+
+Peel the orange
+
+Prepare the gum
+
+Peel the prawn
+
+Peel the lobster
+
+Prepare the lasagna
+
+Core the apple
+
+You can eat it on Fri Jan 23 19:33:20 PST 1970
+
+You can eat it on Fri Jan 23 19:33:20 PST 1970
+
+ 
+
+3. We started on a BinarySearch Class in class on Monday (Code is posted under Monday’s folder in Files->Notes).  In this problem you will make it “more” object-oriented in the following ways:
+-You will change its name to SortedList
+
+-You will make a constructor that takes no arguments to be more traditional and initialize the member fields to dummy values.
+
+-You will add a constructor that takes in an initialized array and a size
+
+-You will add an insert function that adds a value to the list and maintains its sorted-ness
+
+-You will add a quicksort function (feel free to use what you wrote #1).
+
+-You will make updates as necessary to the main function so that it still runs and tests your code.
