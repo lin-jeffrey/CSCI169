@@ -1,0 +1,20 @@
+1.  You’ll write a function which takes as input an ArrayList  of Strings and Integers, and returns an ArrayList of objects from problem 2 of Programming HW 4 (to make it simpler, we’ll restrict it to Food, Fruit, Apple, and Orange objects), and a sensible main that tests it.    The starting ArrayList should be formatted as follows:  the name of the type of the next object, followed by parameter(s) that should be sent as input to the class’ constructor (however if you should send a Date as input, you will be given either the string “now” if you should use Date’s constructor that takes no parameters, or an Integer if you should use the constructor that takes a long).  So for instance, the input ArrayList could contain the following:  “Food”, “Orange”, “Fruit”, “Papaya”, Integer(3932728), “Apple”, “now”, “Food”, “sandwich”, and the resulting ArrayList would have 5 objects in it, of type Food, Orange, Fruit, Apple, and Food.
+You may wish to refer to the documentation for the Date class:  https://docs.oracle.com/javase/8/docs/api/java/util/Date.html (Links to an external site.)
+
+ 
+
+2. You should modify your Fruit class so that it implements Java’s Comparable interface: https://www.javatpoint.com/Comparable-interface-in-collection-framework (Links to an external site.)
+A piece of fruit should be considered greater if its ripe Date is later.
+
+You should also create a main function and/or class that creates an ArrayList of Fruit, prints out its contents in a nice format, sorts it, and prints out its contents again.
+
+ 
+
+3. In this problem, you’ll be working with the Food, Fruit, Apple, and Orange classes from problem 2 of Programming HW 4. Translate these classes into C++ (you may use a built-in Date class or create your own),, and add the following two classes:
+Vegetable, which inherits from Food (Data:  expiration:Date, Methods: Vegetable(), Vegetable(n:String, e:Date), expireTime():Date)
+
+Tomato, which inherits from Vegetable and Fruit (Data: None, Methods: Tomato(), Tomato(e:Date, r:Date, n:String))
+
+Add print statements to all constructors that show which class’s constructor has been called.  You should ensure that the Food constructor is called only once when a Tomato object is created.
+
+Also include a main function that creates a Tomato object and calls all of its member functions.
