@@ -1,0 +1,14 @@
+package problem1
+
+object Problem1 
+{
+  def gcd(a: Int, b: Int): Int =
+    if (b == 0) a 
+    else if (a > b) gcd(a - b, b)
+    else gcd(a, b-a)
+    
+  def main(args: Array[String] ) 
+  {
+    println(gcd(25,10))
+  }
+}

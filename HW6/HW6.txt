@@ -1,0 +1,43 @@
+1. In Scala, write a recursive function that implements Euclid’s method for finding the greatest common divisor of two positive numbers.
+
+2. In Scala, write a more general version of the sum_fun function called apply_combine that applies a function f(taken as a parameter) to the integers from 1 to x(taken as a parameter), then combines those values using another function g(taken as a parameter).  So combine takes in three parameters: a function f that takes in an Int and returns an Int, an Int x, and a function g that takes in two Ints and returns an Int.  It then returns the result of using the function g to combine the values gained by applying f to 1, 2, …, x.  For example, if I define
+def add(x:Int, y:Int) :Int = x+y
+
+def square(x:Int):Int = x*x
+
+ 
+
+then
+
+combine(square, 4, add)
+
+would return 30
+
+ 
+
+And if I define
+
+def mult(x:Int, y:Int) :Int = x*y
+
+ 
+
+then
+
+combine((x)=>x, 4, mult)
+
+would return 24
+
+ 
+
+ 
+
+3. Write a curried version of the function from problem 2.   Since this function takes three parameters, we're going to do two steps of currying.  This function, apply_combine2, takes in one parameter, the function f:Int=>Int.  apply_combine2 then returns a function that takes in one Int parameter, and returns yet another function which in turn takes in a function g:(Int, Int)=>Int and returns the same Int value as apply_combine.  It’s up to you whether you wish to use named or anonymous functions.
+ 
+
+For example, we could use this function in the following ways:
+
+def apply_square = apply_combine2((x)=>x*x)
+
+def apply_square_5 = apply_square(5)
+
+println(apply_combine2((x)=>x*x)(5)((x, y)=>x*y))
