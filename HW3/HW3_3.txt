@@ -1,5 +1,0 @@
-The output of problem 3 is explained by:
-The first print of spam returns "test spam" because when do_local() is called it creates a new variable in its own scope called spam so it does not alter the spam in the scope_test() scope.
-The second print of spam returns "nonlocal spam" since in the function do_nonlocal() the spam inside the function refers to the spam in the scope outside the definition scope since it has the "nonlocal" keyword.
-The third print of spam also returns "nonlocal spam" since the do_global() function alters the global spam variable and does not alter the one inside the scope_test() scope. 
-The fourth print of spam returns "global spam" since the print is called outside the function therefore when scope_test() is called the do_global() altered the global scope spam to be "global spam" which is then printed.
