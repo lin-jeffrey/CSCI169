@@ -1,0 +1,7 @@
+1. Add the following functions to the BSTree class we discussed Friday 5/29
+def depth:Int  This function should return the number of values traversed between the root and the deepest leaf (inclusive). You may NOT use pattern matching (the match/case syntax).
+
+def exactsubtree(that:BSTree):Boolean   This function should return true if this appears in the exact same structure as a subtree of that (down to the Leaf references).  You MUST use pattern matching.
+
+ 
+2. Write a function def findlast(xs:List[Int], x:Int):Int that returns the index of the last time the element x appears in the list xs.  Return -1 if the element does not appear in the list.  For this function, you MUST use pattern matching, and you may NOT use any built-in list functions.  I will give 2 points extra credit if you do it without a helper function.

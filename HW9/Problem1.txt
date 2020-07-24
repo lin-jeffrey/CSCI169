@@ -1,0 +1,157 @@
+//this program implements a BSTree and several functions pertaining to matching subtrees and finding the depth of trees
+package problem1
+
+object Problem1
+{  
+  abstract class BSTree{ //Can't be instantiated - can't make an object of type BSTree.
+    	def member(x: Int): Boolean//Tells us if x is in the BSTree
+    	def insert(x: Int): BSTree//creates a new tree that is the same as this one, but with x added
+    	
+    	def printy(level:Int):Unit
+    	def depth():Int
+    	def equal(other: BSTree): Boolean
+    	def exactsubtree(that: BSTree): Boolean
+  }
+  
+  case object Leaf extends BSTree{
+    def member(x:Int):Boolean = false//sensible to make x cbn
+    def insert(x:Int):BSTree = new Node(x, Leaf, Leaf)
+    
+    def printy(level:Int):Unit = {
+      def loop(x:Int):Unit = 
+        if(x==0) 
+          print("  ")
+        else {
+          print("  "); 
+          loop(x-1)
+        } 
+      loop(level) 
+      println("Leaf")
+    }
+    
+    def depth():Int = 0
+    
+    def equal(other: BSTree): Boolean = {
+      other match{
+        case Leaf => true
+        case Node(_, _, _) => false
+      }
+    }
+    
+    def exactsubtree(that: BSTree): Boolean = {
+      that match{
+        case Leaf => 
+          if(this == that)
+            true
+          else
+            false
+        case Node(_, _, _) => false
+      }
+    }   
+  }
+
+  case class Node(value:Int, left:BSTree, right:BSTree) extends BSTree{
+    def member(x: Int): Boolean = //Tells us if x is in the BSTree
+      if(x>value) 
+        right.member(x)//look in the right subtree
+      else if(x<value) 
+        left member x//same as left.member(x)
+      else 
+        true//x==value
+  
+        
+    //left insert x
+    //This is a copy of the left subtree with x added to it
+    def insert(x: Int): BSTree = //creates a new tree that is the same as this one, but with x added
+    	  //BSTrees with no duplicates, so don't add a second copy if x is already in the tree
+    	  if(x<value)  
+    	    new Node(value, left insert x, right)        //go left
+    	  else if(x>value) 
+    	    new Node(value, left, right insert x)
+    	  else 
+    	    new Node(value, left, right)//x==value
+  
+    def printy(level:Int):Unit = {
+  	    right.printy(level+1);
+      def loop(x:Int):Unit = 
+        if(x==0) 
+          print("  ")
+        else {
+          print("  "); 
+          loop(x-1)
+        } 
+      loop(level) 
+      println(value); 
+      left.printy(level+1)
+    }
+    
+    def depth():Int = {
+      if(left == null && right == null) 0 
+      else
+        if(left.depth() > right.depth)
+          1 + left.depth()
+        else
+          1 + right.depth()
+    }
+    
+    def equal(other: BSTree): Boolean = {
+        other match{
+          case Leaf=> false
+          case Node(v,l,r) =>
+            if(v != value) false
+            else (left equal l) && (right equal r)
+        }
+    }
+    
+    def exactsubtree(that: BSTree): Boolean = {
+      that match{
+        case Leaf => false
+        case Node(v, l, r) => {
+          var result = false
+          if(that != null && this != null){
+            result = this.equal(that) 
+            if(!result)
+               result = this.left.exactsubtree(that) || this.right.exactsubtree(that)
+          }
+          result;
+        }
+      }
+    }
+  }
+
+  def main(args: Array[String] ) 
+  {
+    val t1 = Leaf
+    val t2 = t1 insert 2 insert 4 insert 1 insert 3 insert 7
+    println(t2)
+    t2.printy(0)
+    println("The max depth of this BStree is: " + t2.depth());
+    val t3 = t1 insert 7 insert 1
+    t3.printy(0)
+    println("The max depth of this BStree is: " + t3.depth());
+    
+    val t4 = t1 insert 4 insert 3 insert 7 
+    val t5 = t1 insert 2 insert 4 insert 1 insert 3 insert 7 
+    
+    printf("first tree\n");
+    t4.printy(0)
+    printf("second tree\n");
+    t5.printy(0)
+    if(t5.exactsubtree(t4))
+      printf("true\n");
+    else
+      printf("false\n");
+    
+    val t6 = t1 insert 5 insert 2 insert 8 
+    val t7 = t1 insert 2 insert 4 insert 1 insert 3 insert 7 
+    
+    printf("first tree\n");
+    t6.printy(0)
+    printf("second tree\n");
+    t7.printy(0)
+    if(t7.exactsubtree(t6))
+      printf("true\n");
+    else
+      printf("false\n");
+  }
+}

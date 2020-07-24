@@ -1,0 +1,26 @@
+//this program return the index of the last time an element x appears in a list xs
+package problem2
+
+object Problem2
+{
+  def findlast(xs: List[Int], x:Int): Int = {
+    def findhelper(xs: List[Int], x:Int,index: Int, finalIndex: Int): Int = {
+    xs match {
+      case Nil => finalIndex                      //if the rest of the list is empty return final index
+      case y::ys =>                               //split remaining list elements into y and ys
+        if(y == x) 
+          findhelper(ys, x, index + 1, index)     //if there is a match set finalindex to the current index
+        else 
+          findhelper(ys, x, index + 1, finalIndex)//if no match continue with recursive function
+      }
+    }
+    findhelper(xs, x, 0, -1)  //call helper function
+  }
+  
+  def main(args: Array[String] ) 
+  {
+      val list = List(1,2,3,2,3,3,3,4,2,3,4,5)
+      println(list)
+      println(findlast(list, 2))
+  }
+}
