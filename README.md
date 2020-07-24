@@ -11,6 +11,8 @@ HW6: Introduction to Scala's recursion and currying.
 
 HW7: Implementing anonymous and curried functions using Scala.
 
-HW8: Exploring Scala's implementation of call by name and lists.
+HW8: Creating call by name functions and functions that handle lists in Scala.
 
 HW9: Using Scala's pattern matching and class inheritance.
+
+FinalProject: Building a To-Do List web application using React.
