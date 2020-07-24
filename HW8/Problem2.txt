@@ -1,0 +1,17 @@
+//this program creates a for loop function and prints hello world 10 times
+package problem2
+
+object Problem2
+{
+  def forLoop(i: Int, f: Int => Boolean)(body: => Unit): Unit = {
+    if(f(i)){
+      body
+      forLoop(i-1,f)(body)
+    }
+  }
+  
+  def main(args: Array[String] ) 
+  {
+    forLoop(10,x => x>0)(println("Hello World"))
+  }
+}

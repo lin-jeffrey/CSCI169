@@ -1,0 +1,24 @@
+//this program creates an equivalent of && in scala 
+package problem3
+
+object Problem3
+{
+  def andand(i: Int, j: => Int, x: Int => Boolean, y: Int => Boolean) =
+  //wont evaluate j unless if statement is true
+  if(x(i)){
+    val use = j  //only calculates this once
+    if(y(use)) 
+      println("true")
+    else
+      println("false")
+  }
+  else
+    println("false")
+  
+  
+  def main(args: Array[String] ) 
+  {
+     andand(13, 5+5, x => x % 5 == 0, x => x % 2 == 0)
+     andand(20, 4+4, x => x % 5 == 0, x => x % 2 == 0)
+  }
+}

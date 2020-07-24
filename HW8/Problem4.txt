@@ -1,0 +1,65 @@
+//this program implements the class Biguint and allows for two Bigunints to be added together with carry
+package problem4
+
+object Problem4
+{
+  //Biguint constructor
+  class Biguint(num: List[Int]){
+    //list containing int numbers
+    val numList = num
+    
+    //empty auxiliary constructor
+    def this() = this(0::Nil)
+    
+    //string auxiliary constructor
+    def this(s:String) = this({
+          def convert(s:String):List[Int] =
+            if(s.isEmpty) Nil
+            else convert(s.tail):::List((s.head-'0'));
+            convert(s)})
+            
+    //overloading + such that it can add two Biguints
+    def +(that: Biguint):Biguint = {
+      //helper function to add two List[Int] with carry 
+      def adder(num1: List[Int], num2: List[Int], carry: Int): List[Int] = {
+        //if both lists are empty return null
+        if(num1.isEmpty && num2.isEmpty) Nil  
+        //if one list is empty return the rest of the other list
+        else if(num1.isEmpty) num2            
+        else if(num2.isEmpty) num1
+        
+        //if non-empty lists are satisfied
+        else{
+          //add result with carry
+          val result = num1.head + num2.head + carry
+          //if there is carry then add result%10 to the List[Int] and indicate carry on recursive call
+          if(result >= 10) 
+             result%10::adder(num1.tail, num2.tail, 1)
+          //else add result to List[Int]
+          else 
+            result::adder(num1.tail, num2.tail, 0)
+        }
+      }
+      //create new Biguint to return with the added List[Int]
+      new Biguint(adder(this.numList, that.numList, 0))
+    }
+    
+    //prints Biguint numList in correct order 
+    def printBiguint(){
+      println(this.numList.reverse) 
+    }
+  }
+  
+  def main(args: Array[String] ) 
+  {
+     //when using the List[Int] constructor the list must be in reverse order
+     val a = new Biguint(List(2,6,5,1))
+     a.printBiguint
+     //however for strings the normal order int can be written
+     val b = new Biguint("1472")
+     b.printBiguint
+     //compute addition
+     val c = a + b
+     c.printBiguint
+  }
+}
