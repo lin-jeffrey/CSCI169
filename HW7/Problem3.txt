@@ -1,0 +1,22 @@
+//this program outputs a list of elements from another list that fulfills a certain boolean function
+package problem3
+
+object Problem3
+{
+  def ifList(xs: List[Int], f: (Int) => Boolean): List[Int] =
+    //if both lists are empty return null
+    if(xs.isEmpty) Nil
+    //if the first element fulfills the boolean function add it to the list
+    else if(f(xs.head))
+      xs.head::ifList(xs.tail, f)
+    //if the element does not fulfill the boolean continue with the rest of the list
+    else 
+      ifList(xs.tail, f)
+  
+  def main(args: Array[String] ) 
+  {
+    val list: List[Int] = List(3, 8, 1, 5, 14, 4, 7, 20)
+    println(ifList(list, x => x>10))
+    println(ifList(list, x => x%2==0))
+  }
+}

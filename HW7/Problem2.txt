@@ -1,0 +1,20 @@
+//this program combines two lists using a specific function
+package problem2
+
+object Problem2
+{
+  def combinefun(xs: List[Int], ys: List[Int], f: (Int,Int) => Int): List[Int] =
+    //if both lists are empty return null
+    if(xs.isEmpty && ys.isEmpty) Nil
+    //don't return the rest of the list if one list is null
+    else if(xs.isEmpty) Nil
+    else if(ys.isEmpty) Nil
+    else f(xs.head,ys.head)::combinefun(xs.tail,ys.tail,f)
+  
+  def main(args: Array[String] ) 
+  {
+    val list1: List[Int] = List(3, 8, 1, 5)
+    val list2: List[Int] = List(12, 6, 23, 1, 8, 4)
+    println(combinefun(list1,list2,(x,y)=>x+y))
+  }
+}
