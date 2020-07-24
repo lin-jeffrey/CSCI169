@@ -1,0 +1,30 @@
+//this program outputs a list of elements from another list that fulfills a certain boolean function using currying
+package problem4
+
+object Problem4
+{
+  //outside function takes in a Int to Boolean function
+  def ifListCurried(f: (Int) => Boolean): List[Int] => List[Int] = 
+    //inside function takes in a List[Int] and outputs a List[Int]
+    (xs:List[Int]) =>
+      //if both lists are empty return null
+      if(xs.isEmpty) Nil
+      //if the first element fulfills the boolean function add it to the list
+      else if(f(xs.head))
+        xs.head::ifListCurried(f)(xs.tail)
+      //if the element does not fulfill the boolean continue with the rest of the list  
+      else 
+        ifListCurried(f)(xs.tail)
+
+  
+  def main(args: Array[String] ) 
+  {
+    val list: List[Int] = List(3, 8, 1, 5, 14, 4, 7, 20)
+    
+    def listAboveTen = ifListCurried(x => x>10)
+    println(listAboveTen(list))
+    
+    def listDivsTwo = ifListCurried(x => x%2==0)
+    println(listDivsTwo(list))
+  }
+}
